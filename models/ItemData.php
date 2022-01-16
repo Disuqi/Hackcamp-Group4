@@ -5,6 +5,7 @@ class ItemData {
     $_platforms, $_requiredAge, $_categories, $_genres, $_tags, $_achievements,
     $_positiveRatings, $_negativeRatings, $_averagePlaytime, $_medianPlaytime, $_physical,
     $_unitsAvailable, $_unitsSold, $_price;
+    protected $dbRow;
 
     public function __construct($dbRow) {
         $this->_appid = $dbRow['appid'];
@@ -27,6 +28,7 @@ class ItemData {
         $this->_unitsAvailable = $dbRow['units_available'];
         $this->_unitsSold = $dbRow['units_sold'];
         $this->_price = $dbRow['price'];
+        $this->dbRow = $dbRow;
     }
 
     public function getAppId() {
@@ -107,6 +109,10 @@ class ItemData {
 
     public function getPrice() {
         return $this->_price;
+    }
+
+    public function getDbRow(){
+        return $this->dbRow;
     }
 }
 
