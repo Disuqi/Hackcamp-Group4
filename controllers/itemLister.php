@@ -1,5 +1,5 @@
 <?php
-$view->fields = ['appid', 'release_date', 'developer', 'publisher', 'genres', 'tags', 'price'];
+$view->fields = ['appid', 'release_date', 'developer', 'publisher', 'genres', 'price'];
 if(isset($_POST['fields']))
     $view->fields = [];
     foreach($_POST as $field){
