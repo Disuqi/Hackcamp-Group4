@@ -54,11 +54,11 @@
             </div>
         </li>
         <li class="list-group-item d-flex align-items-center justify-content-around">
-            <a class="d-inline-block mx-2"><input class="form-check-input" type="checkbox"></a>
+            <input class="form-check-input d-inline-block mx-2" type="checkbox">
         <?php
         foreach($view->fields as $field){
             echo "
-                <a class='d-inline-block mx-2'>$field</a>
+                <h6 class='d-inline-block mx-2' style='width: 140px'><strong>$field</strong></h6>
             ";
         }
         ?>
@@ -66,11 +66,11 @@
         <?php
         foreach($view->items as $item){
             echo "<li class='list-group-item d-flex align-items-center justify-content-around'>";
-            echo "<a class='d-inline-block mx-2'><input class='form-check-input' type='checkbox'></a>";
+            echo "<input class='form-check-input d-inline-block mx-2' type='checkbox'>";
             $itemData = $item->getDbRow();
             foreach($itemData as $key => $value){
                 if(in_array($key, $view->fields)){
-                    echo "<a class='d-inline-block mx-2'>".$value."</a>";
+                    echo "<p class='d-inline-block mx-2' style='width: 140px'>".$value."</p>";
                 }
             }
             echo "</li>";
