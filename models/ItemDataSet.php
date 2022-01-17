@@ -16,7 +16,7 @@ class ItemDataSet {
 
     public function fetchAllItems(): array
     {
-        $sqlQuery = 'SELECT * FROM gamesales';
+        $sqlQuery = 'SELECT * FROM gamesales LIMIT 100';
         return $this->getObjectsFromQuery($sqlQuery);
     }
 
@@ -110,7 +110,7 @@ class ItemDataSet {
             }
         }else{
             foreach($this->attributes as $attribute){
-                if($attribute != 'appid'){
+                if($attribute == 'appid'){
                     $sqlQuery .= ' WHERE';
                 }else{
                     $sqlQuery .= ' OR';
