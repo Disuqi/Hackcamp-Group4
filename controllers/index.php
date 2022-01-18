@@ -1,6 +1,5 @@
 <?php
 $view = new stdClass();
-require_once "itemLister.php";
 require_once  $_SERVER['DOCUMENT_ROOT'] . "/models/itemDataSet.php";
 
 $dataSet = new ItemDataSet();

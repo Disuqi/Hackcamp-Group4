@@ -1,80 +1,35 @@
-<div class="d-flex justify-content-center">
-    <ul class="list-group col-8">
-        <li class="list-group-item d-flex align-items-center">
-            <span class="mx-2">View</span>
-            <div class="dropdown mx-2">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Select
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-list-task"></i> List</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-grid"></i> Grid</a></li>
-                    <li><a class="dropdown-item" ><i class="bi bi-grid-3x3"></i> Compact Grid</a></li>
-                    <li><a class="dropdown-item" ><i class="bi bi-columns"></i> Columns</a></li>
-                    <li><a class="dropdown-item"><i class="bi bi-arrows-angle-expand"></i> Increase Size</a></li>
-                    <li><a class="dropdown-item"><i class="bi bi-arrows-angle-contract"></i> Decrease Size</a></li>
-                </ul>
-            </div>
-            <div class="input-group mx-2">
-                <input type="search" class="form-control" placeholder="Search">
-                <button class="btn btn-dark" type="button"><i class="bi bi-search"></i></button>
-            </div>
-            <div class="mx-2" style="min-width: 80px;">
-                <button class="btn btn-outline-dark" type="button"><i class="bi bi-funnel-fill"></i>Filter</button>
-            </div>
-            <div class="dropdown mx-2">
-                <button class="btn" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i style="font-size: 25px"  class="bi bi-gear"></i>
-                </button>
-                <ul style="min-width: 200px"  class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-                        <?php
-                        $fields = ['appid', 'release_date', 'english', 'developer', 'publisher', 'status', 'platforms', 'required_age', 'categories', 'genres', 'tags', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'physical', 'units_available', 'units_sold', 'price'];
-                        foreach($fields as $field){
-                            echo "
-                            <li class='d-flex align-items-center my-1 mx-3'>
-                                <div>";
-                            if(in_array($field, $view->fields)){
-                                echo "<input type='checkbox' class='form-check-input' id=$field name=$field value=$field checked='checked'>";
-                            }else{
-                                echo "<input type='checkbox' class='form-check-input' id=$field name=$field value=$field>";
-                            }
-                            echo "
-                                    <label class='mx-2 form-label' for=$field>$field</label>
-                                </div>
-                            </li>
-                            ";
-                        }
-                        ?>
-                        <li class="d-flex align-items-center  justify-content-center m-1">
-                            <button class="btn btn-outline-success" type="submit" name="fields"><i class="bi bi-check-lg"></i></button>
-                        </li>
-                    </form>
-                </ul>
-            </div>
-        </li>
-        <li class="list-group-item d-flex align-items-center justify-content-around">
-            <input class="form-check-input d-inline-block mx-2" type="checkbox">
+<div>
+    <table
+            class="table"
+            id="itemLister"
+            data-toggle="table"
+            data-show-columns="true"
+            data-search="true"
+            data-show-toggle="true"
+            data-pagination="true"
+            data-resizable="true"
+    >
+        <thead>
+            <tr>
+                <?php
+                    $fields = ['appid', 'release_date', 'english', 'developer', 'publisher', 'status', 'platforms', 'required_age', 'categories', 'genres', 'tags', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'physical', 'units_available', 'units_sold', 'price'];
+                    foreach($fields as $field){
+                        echo "<th scope='col'>$field</th>";
+                    }
+                ?>
+            </tr>
+        </thead>
+        <tbody>
         <?php
-        foreach($view->fields as $field){
-            echo "
-                <h6 class='d-inline-block mx-2' style='width: 140px'><strong>$field</strong></h6>
-            ";
-        }
-        ?>
-        </li>
-        <?php
-        foreach($view->items as $item){
-            echo "<li class='list-group-item d-flex align-items-center justify-content-around'>";
-            echo "<input class='form-check-input d-inline-block mx-2' type='checkbox'>";
-            $itemData = $item->getDbRow();
-            foreach($itemData as $key => $value){
-                if(in_array($key, $view->fields)){
-                    echo "<p class='d-inline-block mx-2' style='width: 140px'>".$value."</p>";
+            foreach($view->items as $item){
+                echo "<tr>";
+                $itemData = $item->getDbRow();
+                foreach($fields as $field){
+                    echo "<td>" . $itemData[$field] . "</td>";
                 }
+                echo "</tr>";
             }
-            echo "</li>";
-        }
         ?>
-    </ul>
+        </tbody>
+    </table>
 </div>
