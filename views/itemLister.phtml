@@ -8,13 +8,15 @@
             data-show-toggle="true"
             data-pagination="true"
             data-resizable="true"
+            data-sortable="true"
     >
         <thead>
             <tr>
+                <th data-checkbox="true"></th>
                 <?php
                     $fields = ['appid', 'release_date', 'english', 'developer', 'publisher', 'status', 'platforms', 'required_age', 'categories', 'genres', 'tags', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'physical', 'units_available', 'units_sold', 'price'];
                     foreach($fields as $field){
-                        echo "<th scope='col'>$field</th>";
+                        echo "<th scope='col' data-sortable='true'>$field</th>";
                     }
                 ?>
             </tr>
