@@ -12,6 +12,9 @@ class ItemDataSet {
         $this->attributes = ['appid', 'release_date', 'english', 'developer', 'publisher', 'status', 'platforms', 'required_age', 'categories', 'genres', 'tags', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'physical', 'units_available', 'units_sold', 'price'];
         $this->_dbInstance = Database::getInstance();
         $this->_dbHandle = $this->_dbInstance->getdbConnection();
+        if(session_id() == ''){
+            session_start();
+        }
     }
 
     public function fetchAllItems(): array
@@ -57,40 +60,49 @@ class ItemDataSet {
      * @return array of ItemData Objects
      * This function takes the input splits it makes the necessary changes and checks, it then makes a sql statement and returns all the data that match the statement.
      */
-    function search(string $data): array
+    function search(string $data, bool $secondSearch = false): array
     {
-        $sqlQuery = 'SELECT * FROM gamesales';
-        $values = [];
-        if(strpos($data, ',')){
+        if($secondSearch){
+            $sqlQuery = $_SESSION['lastSqlQuery'];
+            $values = $_SESSION['lastValues'];
+        }else{
+            $sqlQuery = 'SELECT * FROM gamesales';
+            $values = [];
+        }
+        if(strpos($data, ',')) {
             $separatedData = explode(',', $data);
-            for($i = 0; $i < sizeof($separatedData); $i++){
+            for ($i = 0; $i < sizeof($separatedData); $i++) {
                 //dealing with extra ',' as some items might have them in their name/value
                 $item = $separatedData[$i];
                 $separatedData[$i] = trim($item);
                 $noProblem = false;
-                foreach($this->attributes as $attribute){
-                    if(str_starts_with(strtolower($separatedData[$i]), $attribute)){
+                foreach ($this->attributes as $attribute) {
+                    if (str_starts_with(strtolower($separatedData[$i]), $attribute)) {
                         $noProblem = true;
                         break;
                     }
                 }
-                if(!$noProblem && $i > 0) {
+                if (!$noProblem && $i > 0) {
                     $separatedData[$i - 1] .= ',' . $item;
                     unset($separatedData[$i]);
                     $separatedData = array_values($separatedData);
                     $i--;
                 }
             }
-            for($i=0; $i< sizeof($separatedData); $i++){
-                //separating attribute from value and dealing with extra : as some items might have them in their name/value
-                $attributeAndValue = explode(':', $separatedData[$i]);
-                if(sizeof($attributeAndValue) > 2){
-                    for($e = 2; $e < sizeof($attributeAndValue); $e++){
-                        $attributeAndValue[$e-1] .= ':' . $attributeAndValue[$e];
-                        unset($attributeAndValue[$e]);
-                        $attributeAndValue = array_values($attributeAndValue);
-                    }
+        }else{
+            $separatedData = [$data];
+        }
+        for($i=0; $i< sizeof($separatedData); $i++){
+            //separating attribute from value and dealing with extra : as some items might have them in their name/value
+            $attributeAndValue = explode(':', $separatedData[$i]);
+            if(sizeof($attributeAndValue) > 2){
+                for($e = 2; $e < sizeof($attributeAndValue); $e++){
+                    $attributeAndValue[$e-1] .= ':' . $attributeAndValue[$e];
+                    unset($attributeAndValue[$e]);
+                    $attributeAndValue = array_values($attributeAndValue);
                 }
+            }
+            if(sizeof($attributeAndValue) == 2){
                 if(strpos($attributeAndValue[0], ' ')){
                     $attributeAndValue[0] = str_replace(' ', '_', $attributeAndValue[0]);
                 }
@@ -100,15 +112,37 @@ class ItemDataSet {
                         if(str_ends_with($sqlQuery, 'gamesales')){
                             $sqlQuery .= ' WHERE';
                         }else{
-                            $sqlQuery .= 'AND';
+                            $sqlQuery .= ' AND';
                         }
-                        $sqlQuery .= ' instr('.$attribute.', ?) > 0 ';
-                        array_push($values, $attributeAndValue[1]);
+                        switch($attribute){
+                            case 'physical':
+                            case 'required_age':
+                            case 'english':
+                            case 'appid':
+                                $sqlQuery .= ' ' . $attribute . ' = ? ';
+                                break;
+                            case 'achievements':
+                            case 'positive_ratings':
+                            case 'negative_ratings':
+                            case 'average_playtime':
+                            case 'median_playtime':
+                            case 'units_available':
+                            case 'units_sold':
+                            case 'price':
+                                $sqlQuery .= ' ' . $attribute . ' >= ? ';
+                                break;
+                            case 'release_date':
+                                $sqlQuery .= ' ' . $attribute . ' = STR_TO_DATE(?, "%d/%m/%Y")';
+                                break;
+                            default:
+                                $sqlQuery .= ' instr('.$attribute.', ?) > 0 ';
+                                break;
+                        }
+                        array_push($values, trim($attributeAndValue[1]));
                         break;
                     }
                 }
-            }
-        }else{
+        } else if (sizeof($attributeAndValue) < 2){
             foreach($this->attributes as $attribute){
                 if($attribute == 'appid'){
                     $sqlQuery .= ' WHERE';
@@ -116,18 +150,23 @@ class ItemDataSet {
                     $sqlQuery .= ' OR';
                 }
                 $sqlQuery.= ' instr(' . $attribute . ', ?) > 0 ';
-                array_push($values, $data);
+                array_push($values, trim($data));
             }
-        }
+        }}
         return $this->getObjectsFromQuery($sqlQuery, $values);
     }
 
-    function executeQuery($sqlQuery, $values = null): bool|PDOStatement
+    function executeQuery(string $sqlQuery, array $values = null): bool|PDOStatement
     {
         //preparing the PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         //executing query
         $statement->execute($values);
+
+        //saving the query and values in session variables
+        $_SESSION['lastSqlQuery'] = $sqlQuery;
+        $_SESSION['lastValues'] = $values != null? $values : [] ;
+
         return $statement;
     }
 }
