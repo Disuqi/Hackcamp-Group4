@@ -24,7 +24,7 @@
         <tbody>
         <?php
             foreach($view->items as $item){
-                echo "<tr>";
+                echo "<tr><td data-checkbox='false'></td>";
                 $itemData = $item->getDbRow();
                 foreach($fields as $field){
                     echo "<td>" . $itemData[$field] . "</td>";
