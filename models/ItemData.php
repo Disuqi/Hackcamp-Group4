@@ -8,6 +8,8 @@ class ItemData {
     protected $dbRow;
 
     public function __construct($dbRow) {
+        $date = date_create($dbRow['release_date']);
+        $dbRow['release_date'] = date_format($date, 'd/m/Y');
         $this->_appid = $dbRow['appid'];
         $this->_releaseDate = $dbRow['release_date'];
         $this->_english = $dbRow['english'];

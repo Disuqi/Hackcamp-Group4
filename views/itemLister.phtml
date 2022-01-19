@@ -9,14 +9,22 @@
             data-pagination="true"
             data-resizable="true"
             data-sortable="true"
+            <?php
+                if(sizeof($view->items) == 0 ){
+                    echo "data-url='/json/data.json'";
+                }
+            ?>
     >
         <thead>
             <tr>
                 <th data-checkbox="true"></th>
                 <?php
-                    $fields = ['appid', 'release_date', 'english', 'developer', 'publisher', 'status', 'platforms', 'required_age', 'categories', 'genres', 'tags', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'physical', 'units_available', 'units_sold', 'price'];
-                    foreach($fields as $field){
-                        echo "<th scope='col' data-sortable='true'>$field</th>";
+                    foreach($view->fields as $field){
+                        if(in_array($field, $view->defaultFields)){
+                            echo "<th data-field='$field' scope='col' data-sortable='true'>$field</th>";
+                        }else {
+                            echo "<th data-field='$field' scope='col' data-sortable='true' data-visible='false'>$field</th>";
+                        }
                     }
                 ?>
             </tr>
@@ -26,7 +34,7 @@
             foreach($view->items as $item){
                 echo "<tr><td data-checkbox='false'></td>";
                 $itemData = $item->getDbRow();
-                foreach($fields as $field){
+                foreach($view->fields as $field){
                     echo "<td>" . $itemData[$field] . "</td>";
                 }
                 echo "</tr>";
