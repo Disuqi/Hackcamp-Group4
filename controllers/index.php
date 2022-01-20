@@ -6,7 +6,7 @@ $view->defaultFields = ['appid', 'release_date', 'developer', 'status'];
 
 require_once  $_SERVER['DOCUMENT_ROOT'] . "/models/itemDataSet.php";
 
-if(isset($_POST['mainSearch'])){
+if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
     $dataSet = new ItemDataSet();
     $view->items = $dataSet->search($_POST['mainSearch']);
 }
