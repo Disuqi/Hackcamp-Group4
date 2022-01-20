@@ -1,0 +1,21 @@
+<div class="row justify-content-start mx-5">
+    <?php
+    if(sizeof($view->items) == 0) {
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/json/data.json');
+        $view->items = json_decode($json, true);
+    }
+    foreach($view->items as $item){
+        echo "
+            <div class='card m-3' style='width: 20rem'><div class='card-body'>";
+        foreach($view->defaultFields as $field){
+            if($field == 'appid'){
+                echo "<h5 class='card-title'><span style='font-weight: bold'>App ID:</span> " . $item[$field] ." </h5>";
+            }else{
+                echo "<p><span style='font-weight: bold'>$field:</span> " . $item[$field] ."</p>";
+            }
+        }
+        echo "<div class='d-flex'><input type='checkbox' class='form-check-input'><p class='mx-2'>Select Item</p></div><button class='btn btn-dark'>More Details</button>
+    </div></div>";
+    }
+    ?>
+</div>

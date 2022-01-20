@@ -11,6 +11,8 @@
             data-pagination="true"
             data-resizable="true"
             data-sortable="true"
+            data-show-columns-toggle-all="true"
+            data-click-to-select="true"
             style="border: 1px solid black;border-radius: 1em"
             <?php
                 if(sizeof($view->items) == 0 ){
@@ -36,9 +38,8 @@
         <?php
             foreach($view->items as $item){
                 echo "<tr><td data-checkbox='false'></td>";
-                $itemData = $item->getDbRow();
                 foreach($view->fields as $field){
-                    echo "<td>" . $itemData[$field] . "</td>";
+                    echo "<td>" . $item[$field] . "</td>";
                 }
                 echo "</tr>";
             }

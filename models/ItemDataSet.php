@@ -55,6 +55,19 @@ class ItemDataSet {
         return $dataset;
     }
 
+    function getDbRowsFromQuery($sqlQuery, $values = null): array{
+        //preparing the PDO statement
+        $statement = $this->executeQuery($sqlQuery, $values);
+        //creating an empty array
+        $dataset = [];
+        //filling up the array with the result gotten from executing the query
+        while($row = $statement->fetch()){
+            $dataset[] = $row;
+        }
+        //returning a list of users that match the query
+        return $dataset;
+    }
+
     /**
      * @var $data string the data typed by the user. It should follow this format "column name: value, anotherColumn name: value".
      * If it is only looking for one column there is no need for the ","
@@ -156,7 +169,7 @@ class ItemDataSet {
                 array_push($values, trim($data));
             }
         }}
-        return $this->getObjectsFromQuery($sqlQuery, $values);
+        return $this->getDbRowsFromQuery($sqlQuery, $values);
     }
 
     function executeQuery(string $sqlQuery, array $values = null): bool|PDOStatement
