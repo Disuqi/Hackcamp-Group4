@@ -1,10 +1,10 @@
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for Chrome, Safari and Opera*/
 .leftPanel::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+/* Hide scrollbar for IE, Edge and Firefox*/
 .leftPanel {
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none;  /* IE and Edge*/
     scrollbar-width: none;  /* Firefox */
 }

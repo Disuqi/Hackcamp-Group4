@@ -9,4 +9,4 @@ require_once  $_SERVER['DOCUMENT_ROOT'] . "/models/itemDataSet.php";
 //$dataSet = new ItemDataSet();
 //$view->items = $dataSet->getObjectsFromQuery('SELECT * FROM gamesales LIMIT 100');
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/views/index.phtml";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/views/template/header.phtml";

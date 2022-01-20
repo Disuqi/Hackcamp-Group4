@@ -1,13 +1,11 @@
-<!--temporary require for testing -->
-<?php require_once "template/header.phtml"; ?>
-
+<div class="row">
 <link href="/css/leftPanelStyle.css" rel="stylesheet">
 <script src="/js/leftPanel.js"></script>
 
 
-<div class="col-3 bg-dark vh-100 text-light p-2 m-0 overflow-auto leftPanel">
+<div class="col-2 bg-dark vh-100 text-light p-2 m-0 overflow-auto leftPanel">
     <div class="row">
-        <div class="col-10"></div>
+        <div class="col-9"></div>
         <!-- expand/hide menu button -->
         <div class="col-2"><h2><i class="bi bi-chevron-left text-white"></i></h2></div>
 
@@ -154,6 +152,8 @@
         </div>
     </div>
 </div>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/views/navbar.phtml"; ?>
 
-<!--temporary require for testing -->
-<?php require_once "template/footer.phtml"; ?>
+
+
+

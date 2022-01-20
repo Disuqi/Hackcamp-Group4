@@ -8,30 +8,16 @@
     <!--Bootstrap table-->
     <link href="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/navbaar.css">
     <!--Bootstrap core CSS-->
     <link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
     <!--Bootstrap Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Index</title>
 </head>
 <body role="document">
-<nav class="nav align-items-center">
-    <!--Logo-->
-    <a class="nav-link navbar-brand" href="/controllers/index.php"><img src="/images/Add-Energy-Logo.png" alt="icon" width="120"></a>
-    <!--Pick User-->
-    <div class="nav-item dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Type of User
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Type1</a></li>
-            <li><a class="dropdown-item" href="#">Type2</a></li>
-            <li><a class="dropdown-item" href="#">Type3</a></li>
-        </ul>
-    </div>
-    <!--Links-->
-    <a class="nav-link" href="#">Link1</a>
-    <a class="nav-link" href="#">Link2</a>
-    <a class="nav-link" href="#">Link3</a>
-</nav>
+<div class="container-fluid">
+    <?php require_once "../controllers/leftPanel.php";?>
+
