@@ -31,7 +31,7 @@ a {
 }
 
 .card {
-  display: inline-flex;
+  /*display: inline-flex;*/
   /*width: 31.5%;*/
   height: 12em;
   margin: 5px;
