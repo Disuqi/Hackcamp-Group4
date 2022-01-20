@@ -56,7 +56,10 @@ class ItemDataSet {
     }
 
     /**
-     * @var $data string the data typed by the user
+     * @var $data string the data typed by the user. It should follow this format "column name: value, anotherColumn name: value".
+     * If it is only looking for one column there is no need for the ","
+     * and there is no limit to how many columns you can look into.
+     * If column name does not exist it will simply return everything in the table.
      * @return array of ItemData Objects
      * This function takes the input splits it makes the necessary changes and checks, it then makes a sql statement and returns all the data that match the statement.
      */
