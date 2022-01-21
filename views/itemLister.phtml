@@ -1,6 +1,82 @@
 
 <div class="p-3">
+    <!--Filter button and functionality-->
+    <nav class="navbar navbar-light" style="width:130px;"> <!--The style can be removed or changed to suit the position-->
+        <div class="container-fluid">
+            <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><i class="bi bi-funnel-fill"></i>Filters</button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filter by:</h5>
+                    <button type="button" class="btn-close text-reset" style="width:25px; height:25px; background-color:red" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <div data-role="rangeslider"> <!--Price Range slider-->
+                                <label for="range-1a">Price Range in (£):</label>
+                                <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="0" data-popup-enabled="true" data-show-value="true">
+                                <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="60" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                        </li> <br>
+                        <li class="nav-item">
+                            <div data-role="rangeslider"> <!--Positive Rating slider-->
+                                <label for="range-1a">Positive Rating:</label>
+                                <input type="range" name="range-1a" id="range-1a" min="0" max="3000000" value="0" data-popup-enabled="true" data-show-value="true">
+                                <input type="range" name="range-1b" id="range-1b" min="0" max="3000000" value="60" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                        </li> <br>
+                        <li class="nav-item">
+                            <div data-role="rangeslider">
+                                <label for="range-1a">Negative Rating:</label>  <!--Negative Rating slider-->
+                                <input type="range" name="range-1a" id="range-1a" min="0" max="1000000" value="0" data-popup-enabled="true" data-show-value="true">
+                                <input type="range" name="range-1b" id="range-1b" min="0" max="1000000" value="60" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                        </li> <br>
+                        <li class="nav-item">
+                            <div data-role="rangeslider">
+                                <label for="range-1a">Units Sold:</label> <!--Units Sold slider-->
+                                <input type="range" name="range-1a" id="range-1a" min="0" max="3000000" value="0" data-popup-enabled="true" data-show-value="true">
+                                <input type="range" name="range-1b" id="range-1b" min="0" max="3000000" value="60" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                        </li> <br>
+                        <li class="nav-item dropdown">  <!--Top 10 Developers dropdown-->
+                            <h6 class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Top 10 Developers:</h6>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Choice of Games</a></li> <!--the links not added-->
+                                <li><a class="dropdown-item" href="#">KOEI TECMO GAMES CO., LTD.</a></li>
+                                <li><a class="dropdown-item" href="#">Ripknot Systems</a></li>
+                                <li><a class="dropdown-item" href="#">Laush Dmitriy Sergeevich</a></li>
+                                <li><a class="dropdown-item" href="#">Nikita "Ghost_RUS"</a></li>
+                                <li><a class="dropdown-item" href="#">Dexion Games</a></li>
+                                <li><a class="dropdown-item" href="#">RewindApp</a></li>
+                                <li><a class="dropdown-item" href="#">Hosted Games</a></li>
+                                <li><a class="dropdown-item" href="#">Blender Games</a></li>
+                                <li><a class="dropdown-item" href="#">Humongous Entertainment</a></li>
+                            </ul>
+                        </li><br>
+                        <li> <!--Release Date calendar-->
+                            <form>
+                                <h6>Release Date:</h6>
+                                <p>From:</p>
+                                <input type="date" id="date" name="from-date">
+                                <p>To:</p>
+                                <input type="date" id="date" name="to-date">
+                            </form>
+                        </li><br>
+                        <li><br><br>
+                            <div class="position-relative"> <!--The submit button-->
+                                <button type="submit" class="btn btn-primary position-absolute top-0 start-50 translate-middle" style="width: 30%;">Submit</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
     <table
             class="table"
             id="itemLister"
