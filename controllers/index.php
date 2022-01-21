@@ -11,4 +11,4 @@ if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
     $view->items = $dataSet->search($_POST['mainSearch']);
 }
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/views/template/header.phtml";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/views/index.phtml";

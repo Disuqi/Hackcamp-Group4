@@ -169,6 +169,7 @@ class ItemDataSet {
                 array_push($values, trim($data));
             }
         }}
+        $sqlQuery.= ' LIMIT 50';
         return $this->getDbRowsFromQuery($sqlQuery, $values);
     }
 
