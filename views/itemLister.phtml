@@ -3,7 +3,6 @@
     <!--Filter button and functionality-->
     <nav class="navbar navbar-light" style="width:130px;"> <!--The style can be removed or changed to suit the position-->
         <div class="container-fluid">
-            <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><i class="bi bi-funnel-fill"></i>Filters</button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filter by:</h5>
@@ -77,9 +76,15 @@
             </div>
         </div>
     </nav>
+    <div id="toolbar">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><i class="bi bi-funnel-fill"></i></button>
+        <button class="btn btn-secondary"><i class="bi bi-grid-fill"></i></button>
+    </div>
     <table
             class="table"
             id="itemLister"
+            data-toolbar="#toolbar"
+            data-toolbar-align="left"
             data-toggle="table"
             data-show-columns="true"
             data-search="true"
@@ -95,8 +100,7 @@
                 if(sizeof($view->items) == 0 ){
                     echo "data-url='/json/data.json'";
                 }
-            ?>
-    >
+            ?>>
         <thead>
             <tr>
                 <th data-checkbox="true"></th>
@@ -123,23 +127,6 @@
         ?>
         </tbody>
     </table>
-    <script>
-        function buttons(){
-            return {
-                filterButton: {
-                    text: 'Filter Results',
-                    icon: 'bi-funnel-fill',
-                    event: function () {
-                        //code to open filter panel
-                        //hello
-                    },
-                    attributes: {
-                        title: 'Filter button'
-                    }
-                }
-            }
-        }
-    </script>
 </div>
 </div>
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/views/template/footer.phtml";
