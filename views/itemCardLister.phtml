@@ -1,5 +1,12 @@
 <div class="row justify-content-start mx-5">
     <?php
+    if(sizeof($view->items) == 0) {
+        if(!isset($_SESSION['jsonFile'])) {
+            $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/json/data.json');
+            $_SESSION['jsonFile'] = json_decode($json, true);
+        }
+        $view->items = $_SESSION['jsonFile'];
+    }
     $counter = 0;
     foreach($view->items as $item){
         $counter += 1;
