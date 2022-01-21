@@ -1,40 +1,61 @@
 
 
 
-
     <!--Buttons-->
-    <div class=" pt-0 text-center">
-        <button type="button" class="btn rounded-pill" style="background-color: #D4D4D4;border: 1px solid black" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            User Dashboard
-        </button>
-    <button class="btn rounded-pill" style="background-color: #D4D4D4;border: 1px solid black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Quick Access Menu <i class="bi bi-chevron-down"></i>
-    </button>
-
+    <div style="padding: 20px;">
+        <div class=" pt-0" style=" margin-left: 40%; ">
+            <button type="button"
+                    class="btn rounded-pill"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 5px;"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                User Dashboard
+            </button>
+            <button type="button"
+                    class="btn rounded-pill"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 5px;"
+                    data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Quick Access Menu <i class="bi bi-chevron-down"></i>
+            </button>
+        </div>
     </div>
     <!--Quick access toolbar content-->
-    <div class="collapse pt-2 pb-2" style="background-color: #D4D4D4" id="collapseExample">
-        <div class="d-flex justify-content-around">
-            <div class="card p-2" style="width:25%; border: 1px solid black"> <!--Just changed width:14rem to 25%-->
-                <a href="#" class="card-link text-decoration-none text-black"><i class="bi bi-bar-chart-line-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
-                <div class="card-text">
-                  <h4 class="card-title">Generate Report</h4>
-                  <p>Generate a report based on your chosen data.</div>
-                </a>
+    <div class="collapse pt-2 pb-2" style="background-color: #D4D4D4; padding: 5px;" id="collapseExample">
+        <div class="card-wrapper">
+            <div class="row"">
+                <div class="col-4"">
+                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card"> <!--Card container-->
+                            <i class="bi bi-bar-chart-line-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Generate Report</h3>
+                                <p>Generate a report based on your chosen data.</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            <div class="card p-2" style="width:25%;border: 1px solid black"> 
-                <a href="#" class="card-link text-decoration-none text-black"> <i class="bi bi-pencil-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
-                <div class="card-text">
-                  <h4 class="card-title">Apply Discount</h4>
-                  <p>Apply discount to your chosen items.</p>
-                </div></a>
-            </div>
-            <div class="card p-2" style="width:25;border: 1px solid black">
-                <a href="#" class="card-link text-decoration-none text-black"><i class="bi bi-cash-coin" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
-                <div class="card-text">
-                  <h4 class="card-title">Change Price</h4>
-                  <p>Change the price of your chosen items.</p>
-                </div></a>
+                <div class="col-4"">
+                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card"> <!--Card container-->
+                            <i class="bi bi-pencil-fill"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Apply Discount</h3>
+                                <p>Apply discount to your chosen items.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-4"">
+                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card"> <!--Card container-->
+                            <i class="bi bi-cash-coin"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Change Price</h3>
+                                <p>Change the price of your chosen items.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -46,7 +67,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">User Dashboard</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" style="width:15px; height:15px; background-color:red" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!--Dashboard content-->
                 <div class="modal-body">
