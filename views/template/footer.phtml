@@ -11,5 +11,35 @@
 
     </div>
     <p class="d-flex justify-content-around ">Created by Group 4 Hack Camp University of Salford, 2022</p>
-</body>
+
+    <script>
+        $(document).ready( function (){
+
+            $('.dsp-btn').click(function (e) {
+                e.preventDefault();
+                // alert('Hello');
+               var app_id = $(this).closest('.app').find('.app-id').text();
+               // console.log(app_id);
+               //  alert(app_id);
+
+                $.ajax({
+                   type: "POST",
+                   url:"moreDetailsPopup.php",
+                    data: {
+                       'checking-view-btn':true,
+                        'app-id':app_id,
+                    },
+                    success: function (response){
+                        alert(response);
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+    </body>
 </html>
