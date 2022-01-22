@@ -17,20 +17,19 @@
 
             $('.dsp-btn').click(function (e) {
                 e.preventDefault();
-                // alert('Hello');
                var app_id = $(this).closest('.app').find('.app-id').text();
-               // console.log(app_id);
-               //  alert(app_id);
+
 
                 $.ajax({
                    type: "POST",
-                   url:"moreDetailsPopup.php",
+                   url:"/controllers/moreDetailsPopup.php",
                     data: {
                        'checking-view-btn':true,
                         'app-id':app_id,
                     },
                     success: function (response){
-                        alert(response);
+                       $('.details-view-data').html(response);
+                       $('#itemDetailsModal').modal('show');
                     }
 
                 });
