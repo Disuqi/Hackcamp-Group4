@@ -1,0 +1,126 @@
+<!-- Modal -->
+<div class="modal fade " id="statsBox" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Statistics</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+<script type="text/javascript" src="../js/chart.js"></script>
+<!--- charts -->
+<div class="d-flex justify-content-center" style="margin-top: 30px">
+    <canvas id="radarChart" style="max-width: 75%;"></canvas>
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-center" style="margin-top: 30px">
+    <canvas id="myChart" style="max-width: 75%;"></canvas>
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-center" style="margin-top: 30px">
+    <canvas id="pieChart" style="max-width: 75%;"></canvas>
+</div>
+
+<hr>
+
+
+<script type="text/javascript">
+    //radar
+    var ctxR = document.getElementById("radarChart").getContext('2d');
+    var myRadarChart = new Chart(ctxR, {
+        type: 'radar',
+        data: {
+            labels: ["Indie", "Casual", "Adventure", "Action", "Simulation", "Strategy", "RPG"],
+            datasets: [{
+                label: "Popularity by tags",
+                data: [5432, 5348, 8721, 8089, 5349, 4451, 3752],
+                backgroundColor: [
+                    'rgba(105, 0, 132, .2)',
+                ],
+                borderColor: [
+                    'rgba(200, 99, 132, .7)',
+                ],
+                borderWidth: 2
+            },
+
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["to £3", "£3-£5", "£5-£10", "£10-£15", "£15-£20", "£20+"],
+            datasets: [{
+                label: 'Price Ranges',
+                data: [8218, 5065, 6296, 2642, 1051, 923],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //pie
+    var ctxP = document.getElementById("pieChart").getContext('2d');
+    var myPieChart = new Chart(ctxP, {
+        type: 'pie',
+        data: {
+            labels: ["Single-player", "Multiplayer", "Split-screen", "Steam Cloud", "MMO"],
+            datasets: [{
+                data: [24440, 4076, 2103, 10322, 557],
+                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

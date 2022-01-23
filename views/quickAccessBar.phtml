@@ -2,21 +2,28 @@
 
 
     <!--Buttons-->
-    <div style="padding: 20px;">
-        <div class=" pt-0" style=" margin-left: 40%; ">
+    <div style="padding: 0px 20px 20px 20px;">
+        <div class=" pt-0 text-center" >
             <button type="button"
                     class="btn rounded-pill"
-                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 5px;"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 0px 5px 5px 5px;"
                     data-bs-toggle="modal" data-bs-target="#exampleModal">
                 User Dashboard
             </button>
             <button type="button"
                     class="btn rounded-pill"
-                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 5px;"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin:0px 5px 5px 5px;"
                     data-bs-toggle="collapse" data-bs-target="#collapseExample"
                     aria-expanded="false" aria-controls="collapseExample">
                 Quick Access Menu <i class="bi bi-chevron-down"></i>
             </button>
+    <?php require_once "statisticsGenerator.phtml"?>
+            <script src="/js/statisticsPopUp.js" ></script>
+
+
+
+
+
         </div>
     </div>
     <!--Quick access toolbar content-->
@@ -24,11 +31,12 @@
         <div class="card-wrapper">
             <div class="row"">
                 <div class="col-4"">
-                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                    <!-- Data analytics button -->
+                    <a href="#" id="statsButton" data-bs-toggle="modal" data-bs-target="#statsBox" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
                         <div class="card"> <!--Card container-->
                             <i class="bi bi-bar-chart-line-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                             <div class="card-text">
-                                <h3 class="card-title">Generate Report</h3>
+                                <h3 class="card-title">Data analytics</h3>
                                 <p>Generate a report based on your chosen data.</p>
                             </div>
                         </div>
