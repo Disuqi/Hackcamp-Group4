@@ -16,4 +16,13 @@ if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
 if(isset($_GET['cards'])){
     $_SESSION['cards'] = $_GET['cards'];
 }
-require_once $_SERVER['DOCUMENT_ROOT'] . "/views/index.phtml";
+
+require_once $_SERVER['DOCUMENT_ROOT'] ."/views/template/header.phtml";
+require_once $_SERVER['DOCUMENT_ROOT'] ."/views/quickAccessBar.phtml";
+require_once $_SERVER['DOCUMENT_ROOT'] ."/views/filterPanel.phtml";
+if( isset($_SESSION['cards']) && $_SESSION['cards'] == 'true'){
+    require_once $_SERVER['DOCUMENT_ROOT'] ."/views/itemCardLister.phtml";
+}else {
+    require_once $_SERVER['DOCUMENT_ROOT'] ."/views/itemLister.phtml";
+}
+require_once $_SERVER['DOCUMENT_ROOT'] ."/views/template/footer.phtml"; ?>
