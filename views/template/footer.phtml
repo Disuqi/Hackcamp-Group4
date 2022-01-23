@@ -17,19 +17,42 @@
 
             $('.dsp-btn').click(function (e) {
                 e.preventDefault();
-               var app_id = $(this).closest('.app').find('.app-id').text();
+                var app_id = $(this).closest('.app').find('.app-id').text();
 
 
                 $.ajax({
-                   type: "POST",
-                   url:"/controllers/moreDetailsPopup.php",
+                    type: "POST",
+                    url:"/controllers/moreDetailsPopup.php",
                     data: {
-                       'checking-view-btn':true,
+                        'checking-view-btn':true,
                         'app-id':app_id,
                     },
                     success: function (response){
-                       $('.details-view-data').html(response);
-                       $('#itemDetailsModal').modal('show');
+                        $('.details-view-data').html(response);
+                        $('#itemDetailsModal').modal('show');
+                    }
+
+                });
+
+
+
+            });
+
+            $('.edit-btn').click(function (e) {
+                e.preventDefault();
+                var app_id = $(this).closest('.app').find('.app-id').text();
+
+
+                $.ajax({
+                    type: "POST",
+                    url:"./controllers/moreDetailsPopup.php",
+                    data: {
+                        'checking-edit-btn':true,
+                        'app-id':app_id,
+                    },
+                    success: function (response){
+                        $('.edit-data').html(response);
+                        $('#itemEditModal').modal('show');
                     }
 
                 });
@@ -39,6 +62,8 @@
         });
 
     </script>
+
+<!--   --><?php //require_once "./views/jQueryPopup.phtml"; ?>
 
     </body>
 </html>

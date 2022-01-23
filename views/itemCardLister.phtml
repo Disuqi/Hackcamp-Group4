@@ -22,10 +22,43 @@
                 echo "<p><span style='font-weight: bold'>$field:</span> " . $item[$field] ."</p>";
             }
         }
-        echo "<div class='d-flex'><input type='checkbox' class='form-check-input'><p class='mx-2'>Select Item</p></div><button href='' class='btn btn-dark dsp-btn'>More Details</button>
+        echo "<div class='d-flex'><input type='checkbox' class='form-check-input'><p class='mx-2'>Select Item</p></div><button href='#' class='btn btn-dark dsp-btn'>More Details</button>
+<button href='#' class='btn btn-dark edit-btn'>Edit</button>
     </div></div>";
     }
     ?>
+</div>
+
+<!-- Edit Modal  -->
+<div class="modal fade bd-example-modal-lg" id="itemEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel"><span style="font-weight: bold">Edit Game Details</span></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="edit-data">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Large modal -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
 </div>
 
 <!-- item details view Modal  -->
