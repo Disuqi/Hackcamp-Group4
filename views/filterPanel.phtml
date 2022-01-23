@@ -1,78 +1,138 @@
 <?php require_once "toolbar.phtml"?>
-<div class="p-3">
-    <!--Filter button and functionality-->
-    <nav class="navbar navbar-light" style="width:130px;"> <!--The style can be removed or changed to suit the position-->
-        <div class="container-fluid">
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filter by:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<!--Filter button and functionality-->
+<nav class="navbar navbar-light"> <!--The style can be removed or changed to suit the position-->
+    <div class="container-fluid">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filter by:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
-                </div>
+            </div>
 
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <div data-role="rangeslider"> <!--Price Range slider-->
-                                <label for="range-1a">Price Range in (£):</label>
-                                <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="0" data-popup-enabled="true" data-show-value="true">
-                                <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="60" data-popup-enabled="true" data-show-value="true">
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item m-3">
+                            <label for="range1" class="fw-bold">Price Range $: </label>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Min</span>
+                                    <input id="rangeValue1" class="form-control min1" oninput="updateValue('range1', this.value, 'max1')" type="number" min="0" max="100" value="0">
+                                </div>
+                                <input class="form-range min1" oninput="updateValue('rangeValue1', this.value, 'max1')" type="range" id="range1" name="range1" min="0" max="100" value="0" data-popup-enabled="true" data-show-value="true">
                             </div>
-                        </li> <br>
-                        <li class="nav-item">
-                            <div data-role="rangeslider"> <!--Positive Rating slider-->
-                                <label for="range-1a">Positive Rating:</label>
-                                <input type="range" name="range-1a" id="range-1a" min="0" max="3000000" value="0" data-popup-enabled="true" data-show-value="true">
-                                <input type="range" name="range-1b" id="range-1b" min="0" max="3000000" value="60" data-popup-enabled="true" data-show-value="true">
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Max</span>
+                                    <input id="rangeValue1b" class="form-control max1" oninput="updateValue('range1b', this.value, null, 'min1')" type="number" min="0" max="100" value="100">
+                                </div>
+                                <input class="form-range max1" oninput="updateValue('rangeValue1b', this.value, null, 'min1')" type="range" id="range1b" name="range1b" min="0" max="100" value="100" data-popup-enabled="true" data-show-value="true">
                             </div>
-                        </li> <br>
-                        <li class="nav-item">
-                            <div data-role="rangeslider">
-                                <label for="range-1a">Negative Rating:</label>  <!--Negative Rating slider-->
-                                <input type="range" name="range-1a" id="range-1a" min="0" max="1000000" value="0" data-popup-enabled="true" data-show-value="true">
-                                <input type="range" name="range-1b" id="range-1b" min="0" max="1000000" value="60" data-popup-enabled="true" data-show-value="true">
+                    </li>
+                    <li class="nav-item m-3">
+                            <label for="range2" class="fw-bold">Positive Ratings <i class="bi bi-hand-thumbs-up-fill"></i>: </label>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Min</span>
+                                    <input id="rangeValue2" class="form-control min2" oninput="updateValue('range2', this.value, 'max2')" type="number" min="0" max="10000" value="0">
+                                </div>
+                                <input class="form-range min2" oninput="updateValue('rangeValue2', this.value, 'max2')" type="range" id="range2" name="range2" min="0" max="10000" value="0" data-popup-enabled="true" data-show-value="true">
                             </div>
-                        </li> <br>
-                        <li class="nav-item">
-                            <div data-role="rangeslider">
-                                <label for="range-1a">Units Sold:</label> <!--Units Sold slider-->
-                                <input type="range" name="range-1a" id="range-1a" min="0" max="3000000" value="0" data-popup-enabled="true" data-show-value="true">
-                                <input type="range" name="range-1b" id="range-1b" min="0" max="3000000" value="60" data-popup-enabled="true" data-show-value="true">
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Max</span>
+                                    <input id="rangeValue2b" class="form-control max2" oninput="updateValue('range2b', this.value, null, 'min2')" type="number" min="0" max="10000" value="10000">
+                                </div>
+                                <input class="form-range max2" oninput="updateValue('rangeValue2b', this.value, null, 'min2')" type="range" id="range2b" name="range2b" min="0" max="10000" value="10000" data-popup-enabled="true" data-show-value="true">
                             </div>
-                        </li> <br>
-                        <li class="nav-item dropdown">  <!--Top 10 Developers dropdown-->
-                            <h6 class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Top 10 Developers:</h6>
-                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Choice of Games</a></li> <!--the links not added-->
-                                <li><a class="dropdown-item" href="#">KOEI TECMO GAMES CO., LTD.</a></li>
-                                <li><a class="dropdown-item" href="#">Ripknot Systems</a></li>
-                                <li><a class="dropdown-item" href="#">Laush Dmitriy Sergeevich</a></li>
-                                <li><a class="dropdown-item" href="#">Nikita "Ghost_RUS"</a></li>
-                                <li><a class="dropdown-item" href="#">Dexion Games</a></li>
-                                <li><a class="dropdown-item" href="#">RewindApp</a></li>
-                                <li><a class="dropdown-item" href="#">Hosted Games</a></li>
-                                <li><a class="dropdown-item" href="#">Blender Games</a></li>
-                                <li><a class="dropdown-item" href="#">Humongous Entertainment</a></li>
-                            </ul>
-                        </li><br>
-                        <li> <!--Release Date calendar-->
-                            <form>
-                                <h6>Release Date:</h6>
-                                <p>From:</p>
-                                <input type="date" id="date" name="from-date">
-                                <p>To:</p>
-                                <input type="date" id="date" name="to-date">
-                            </form>
-                        </li><br>
-                        <li><br><br>
-                            <div class="position-relative"> <!--The submit button-->
-                                <button type="submit" class="btn btn-primary position-absolute top-0 start-50 translate-middle" style="width: 30%;">Submit</button>
+                    </li>
+                    <li class="nav-item m-3">
+                            <label for="range2" class="fw-bold">Positive Ratings <i class="bi bi-hand-thumbs-down-fill"></i>: </label>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Min</span>
+                                    <input id="rangeValue3" class="form-control min3" oninput="updateValue('range3', this.value ,'max3')" type="number" min="0" max="10000" value="0">
+                                </div>
+                                <input class="form-range min3" oninput="updateValue('rangeValue3', this.value,'max3')" type="range" id="range3" name="range3" min="0" max="10000" value="0" data-popup-enabled="true" data-show-value="true">
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Max</span>
+                                    <input id="rangeValue3b" class="form-control max3" oninput="updateValue('range3b', this.value, null, 'min3')" type="number" min="0" max="10000" value="10000">
+                                </div>
+                                <input class="form-range max3" oninput="updateValue('rangeValue3b', this.value, null, 'min3')" type="range" id="range3b" name="range3b" min="0" max="10000" value="10000" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                    </li>
+                    <li class="nav-item m-3">
+                            <label for="range4" class="fw-bold">Units Sold<i class="bi bi-basket2-fill"></i>: </label>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Min</span>
+                                    <input id="rangeValue4" class="form-control min4" oninput="updateValue('range4', this.value, 'max4')" type="number" min="0" max="3000000" value="0">
+                                </div>
+                                <input class="form-range min4" oninput="updateValue('rangeValue4', this.value, 'max4')" type="range" id="range4" name="range4" min="0" max="3000000" value="0" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                            <div class="d-flex justify-content-around align-items-center m-2">
+                                <div class="input-group mx-2">
+                                    <span class="input-group-text">Max</span>
+                                    <input id="rangeValue4b" class="form-control max4" oninput="updateValue('range4b', this.value, null, 'min4')" type="number" min="0" max="3000000" value="3000000">
+                                </div>
+                                <input class="form-range max4" oninput="updateValue('rangeValue4b', this.value, null, 'min4')" type="range" id="range4b" name="range4b" min="0" max="3000000" value="3000000" data-popup-enabled="true" data-show-value="true">
+                            </div>
+                    </li>
+                    <li class="nav-item m-3">
+                        <div class="input-group">
+                            <label class="input-group-text" for="inputGroupSelect01">Developer</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">KOEI TECMO GAMES CO., LTD.</option>
+                                <option value="2">Ripknot Systems</option>
+                                <option value="3">Laush Dmitriy Sergeevich</option>
+                                <option value="4">Nikita "Ghost_RUS"</option>
+                                <option value="5">Dexion Games</option>
+                                <option value="6">RewindApp</option>
+                                <option value="7">Hosted Games</option>
+                                <option value="8">Blender Games</option>
+                                <option value="9">Humongous Entertainment</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="nav-item m-3"> <!--Release Date calendar-->
+                            <h6>Release Date:</h6>
+                        <div class="d-flex align-items-center justify-content-around m-1">
+                            <label class="mx-1" for="from-date" style="width: 100px">From:</label>
+                            <input class="form-control" type="date" id="from-date" name="from-date">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around m-1">
+                            <label class="mx-1" for="to-date" style="width: 100px">To:</label>
+                            <input class="form-control" type="date" id="to-date" name="to-date">
+                        </div>
+                    </li>
+                    <li class="nav-item d-flex align-items-center justify-content-center m-3">
+                        <button type="button" class="btn btn-danger mx-1">Cancel</button>
+                        <button type="submit" class="btn btn-success mx-1">Apply</button>
+                    </li>
+                </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+    <script>
+        function updateValue(outputId, value, minClass = null, maxClass = null){
+            let output = document.getElementById(outputId);
+            output.value = value;
+            if(minClass != null){
+                updateAttribute(minClass, value, true);
+            }else if(maxClass != null){
+                updateAttribute(maxClass, value);
+            }
+        }
+        function updateAttribute(className, value, min = false){
+            let itemsToUpdate = document.getElementsByClassName(className);
+            if(min == true){
+                itemsToUpdate.forEach(item => item.setAttribute('min', value));
+            }else{
+                itemsToUpdate.forEach(item => item.setAttribute('max', value));
+            }
+
+        }
+    </script>
