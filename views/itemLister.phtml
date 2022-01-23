@@ -1,53 +1,53 @@
 <?php require_once "filterPanel.phtml";
 ?>
-<table
-        class="table"
-        id="itemLister"
-        data-toolbar="#toolbar"
-        data-toolbar-align="left"
-        data-toggle="table"
-        data-show-columns="true"
-        data-search="true"
-        data-advanced-search="true"
-        data-id-table="advancedTable"
-        data-show-toggle="true"
-        data-pagination="true"
-        data-resizable="true"
-        data-sortable="true"
-        data-show-columns-toggle-all="true"
-        data-click-to-select="true"
-        data-buttons="buttons"
-        style="border: 1px solid black;"
-        <?php
-            if(sizeof($view->items) == 0 ){
-                echo "data-url='/json/data.json'";
-            }
-        ?>>
-    <thead>
-        <tr>
-            <th data-checkbox="true"></th>
+<div class="p-3">
+    <table
+            class="table"
+            id="itemLister"
+            data-toolbar="#toolbar"
+            data-toolbar-align="left"
+            data-toggle="table"
+            data-show-columns="true"
+            data-search="true"
+            data-advanced-search="true"
+            data-id-table="advancedTable"
+            data-show-toggle="true"
+            data-pagination="true"
+            data-resizable="true"
+            data-sortable="true"
+            data-show-columns-toggle-all="true"
+            data-click-to-select="true"
+            data-buttons="buttons"
+            style="border: 1px solid black;"
             <?php
-                foreach($view->fields as $field){
-                    if(in_array($field, $view->defaultFields)){
-                        echo "<th data-field='$field' scope='col' data-sortable='true'>$field</th>";
-                    }else {
-                        echo "<th data-field='$field' scope='col' data-sortable='true' data-visible='false'>$field</th>";
-                    }
+                if(sizeof($view->items) == 0 ){
+                    echo "data-url='/json/data.json'";
                 }
-            ?>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach($view->items as $item){
-            echo "<tr><td data-checkbox='false'></td>";
-            foreach($view->fields as $field){
-                echo "<td>" . $item[$field] . "</td>";
+            ?>>
+        <thead>
+            <tr>
+                <th data-checkbox="true"></th>
+                <?php
+                    foreach($view->fields as $field){
+                        if(in_array($field, $view->defaultFields)){
+                            echo "<th data-field='$field' scope='col' data-sortable='true'>$field</th>";
+                        }else {
+                            echo "<th data-field='$field' scope='col' data-sortable='true' data-visible='false'>$field</th>";
+                        }
+                    }
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            foreach($view->items as $item){
+                echo "<tr><td data-checkbox='false'></td>";
+                foreach($view->fields as $field){
+                    echo "<td>" . $item[$field] . "</td>";
+                }
+                echo "</tr>";
             }
-            echo "</tr>";
-        }
-    ?>
-    </tbody>
-</table>
-</div>
+        ?>
+        </tbody>
+    </table>
 </div>
