@@ -53,11 +53,7 @@ if(isset($_POST['checking-edit-btn'])){
     if($view->items >0){
 
         foreach($view->items as $item){
-            $remove = array(';');
-            $categories = str_replace($remove,', ',basename($item->getCategories()));
-            $tags = str_replace($remove,', ',basename($item->getTags()));
-            $platforms = str_replace($remove,', ',basename($item->getPlatforms()));
-            $genres = str_replace($remove,', ',basename($item->getGenres()));
+
             echo $return = '
             <form>
   <div class="row">
