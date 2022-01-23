@@ -1,9 +1,9 @@
 <?php
-if(isset($_GET['cards'])){
+if( isset($_SESSION['cards']) && $_SESSION['cards'] == 'true'){
     echo '
 <div id="toolbar" class="d-flex justify-content-start align-items-center" style="margin-left: 8vh" >
     <button class="btn btn-secondary mx-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><i class="bi bi-funnel-fill"></i></button>
-        <a class="btn btn-secondary mx-1" href="?" style="color: white"><i class="bi bi-list-task"></i></a></div>
+        <a class="btn btn-secondary mx-1" href="?cards=false" style="color: white"><i class="bi bi-list-task"></i></a></div>
     ';
 }else{
     echo '

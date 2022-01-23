@@ -1,7 +1,7 @@
 <?php require_once "template/header.phtml";
 require_once "quickAccessBar.phtml";
 require_once "filterPanel.phtml";
-if(isset($_GET['cards'])){
+if( isset($_SESSION['cards']) && $_SESSION['cards'] == 'true'){
     require_once "itemCardLister.phtml";
 }else {
     require_once "itemLister.phtml";
