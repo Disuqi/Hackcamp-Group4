@@ -17,23 +17,20 @@
                     aria-expanded="false" aria-controls="collapseExample">
                 Quick Access Menu <i class="bi bi-chevron-down"></i>
             </button>
-    <?php require_once('views/statisticsGenerator.phtml')?>
+            <?php require_once('views/statisticsGenerator.phtml')?>
             <script src="/js/statisticsPopUp.js" ></script>
-
-
-
-
-
         </div>
     </div>
+
     <!--Quick access toolbar content-->
     <div class="collapse pt-2 pb-2" style="background-color: #D4D4D4; padding: 5px;" id="collapseExample">
         <div class="card-wrapper">
-            <div class="row"">
-                <div class="col-4"">
-                    <!-- Data analytics button -->
+            <div class="row card-group">
+
+                <!-- Data analytics Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3">
                     <a href="#" id="statsButton" data-bs-toggle="modal" data-bs-target="#statsBox" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
-                        <div class="card"> <!--Card container-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                             <i class="bi bi-bar-chart-line-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                             <div class="card-text">
                                 <h3 class="card-title">Data analytics</h3>
@@ -42,9 +39,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-4"">
+                <!-- Apply Discount Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3">
                     <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
-                        <div class="card"> <!--Card container-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                             <i class="bi bi-pencil-fill"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                             <div class="card-text">
                                 <h3 class="card-title">Apply Discount</h3>
@@ -53,9 +51,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-4"">
+                <!-- Change Price Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3">
                     <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
-                        <div class="card"> <!--Card container-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                             <i class="bi bi-cash-coin"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                             <div class="card-text">
                                 <h3 class="card-title">Change Price</h3>
@@ -67,7 +66,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Dashboard -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,10 +79,10 @@
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="card-wrapper">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height">
-                                    <a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                            <div class="row card-group">
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-pencil-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Register new user</h3>
@@ -93,82 +91,94 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-layout-text-sidebar" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Create a template</h3>
                                                 <p>Create filtering template for left side panel and list display options</p>
                                             </div>
                                         </div>
-                                    </a></div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Manage filters</h3>
                                                 <p>Sort top 100 games by downloaded at the moment</p>
                                             </div>
                                         </div>
-                                    </a></div>
-
-
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-heart-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Top rated</h3>
                                                 <p>Sort top 100 games by top rated at the moment</p>
                                             </div>
                                         </div>
-                                    </a></div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-star-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Most popular</h3>
                                                 <p>Sort top 100 games by most popular at the moment</p>
                                             </div>
                                         </div>
-                                    </a></div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Least downloaded</h3>
                                                 <p>Sort top 100 games by least downloaded at the moment</p>
                                             </div>
                                         </div>
-                                    </a></div>
-
-
-                                <div class="col-md-6 col-sm-12 col-lg-4 height c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-heart-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Generate Report</h3>
                                                 <p>Generate a detailed report based on your chosen data and items</p>
                                             </div>
                                         </div>
-                                    </a></div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 height c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-star-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Apply Discount</h3>
                                                 <p>Select the list of items and apply your chosen discount</p>
                                             </div>
                                         </div>
-                                    </a></div>
-                                <div class="col-md-6 col-sm-12 col-lg-4 c_height"><a href="#" class="card-link c_height"> <!--Anchor contains a single card to make the card clickable-->
-                                        <div class="card c_height"> <!--Card container-->
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
                                             <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
                                             <div class="card-text">
                                                 <h3 class="card-title">Data analytics</h3>
                                                 <p>View data analytics tools: graphs, charts and statistics</p>
                                             </div>
                                         </div>
-                                    </a></div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
