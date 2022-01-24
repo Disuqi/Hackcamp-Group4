@@ -16,7 +16,7 @@ if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
 }
 
 //if GET is set then it is a category search
-if(isset($_GET)){
+if(isset($_GET) && key($_GET) != ""){
     $key = key($_GET);
     switch($key){
         case 'cards':
