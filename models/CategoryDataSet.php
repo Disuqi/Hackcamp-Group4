@@ -57,7 +57,7 @@ class CategoryDataSet
     //Incomplete code: requires removal of variable references and replacement with bindParam or bindValue method
     public function fetchMultiCategories($categoryName) : array
     {
-       $sqlQuery = "SELECT tablename.categories AS $categoryName
+       $sqlQuery = "SELECT tablename.categories AS '$categoryName'
                     FROM(
                         SELECT temp.categories, COUNT(*) as count
                         FROM (

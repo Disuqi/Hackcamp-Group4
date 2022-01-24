@@ -150,12 +150,12 @@
                 </div>
             </div>
             <!--Favourites Panel -->
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><ul class="list-unstyled"><?php
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><?php
                 $dataSet = getFavourites();
 
                 foreach($dataSet as $row) {
-                    echo "<li><a class=\"text-decoration-none\" href=\"#\"><button type=\"button\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star-fill\"></i></span></button></a></li>"; }?> </ul></div>
+                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"".$row->getCategoryName()."\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star-fill\"></i></span></button></form>"; }?> </div>
 
             <!--Search History Panel -->
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Search history panel</div>
