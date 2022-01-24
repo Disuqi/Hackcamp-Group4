@@ -38,6 +38,11 @@ a {
   padding: 5px;
   text-align: center;
 }
+.c_height{
+  height: 260px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
 /*
 @media screen and (max-width: 1060px) {
   .all-cards {
