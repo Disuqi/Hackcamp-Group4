@@ -32,37 +32,15 @@ a {
 
 .bi {
   padding: 10px;
-  /* border: 3px solid red; */
 }
 .card-text {
   padding: 5px;
   text-align: center;
 }
-.c_height{
-  height: 260px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-/*
-@media screen and (max-width: 1060px) {
-  .all-cards {
-    width: 100%;
-  }
+.bdr{
+  /*height: 260px;*/
+  /*margin-bottom: 10px;*/
+  border-radius: 15px;
 }
 
-@media screen and (max-width: 750px) {
-  .card {
-    width: 45%;
-    margin-left: 15px;
-  }
-}
 
-@media screen and (max-width: 490px) {
-  .container {
-    align-content: center;
-  }
-  .card {
-    width: 80%;
-    margin-left: 40px;
-  }
-} */

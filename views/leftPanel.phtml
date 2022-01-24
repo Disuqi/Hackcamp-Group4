@@ -37,10 +37,21 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse text-white bg-dark " aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body bg-dark p-1">
-                                <a class="text-decoration-none" href="#"><button type="button" class=" list-group-item text-white bg-dark list-group-item-action">Windows <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
-                                    </button></a>
-                                <a class="text-decoration-none" href="#"><button type="button" class=" list-group-item text-white bg-dark list-group-item-action">Mac <span class="favourite badge float-end"><i class="bi bi-star"></i></span></button></a>
-                                <a class="text-decoration-none" href="#"><button type="button" class=" list-group-item text-white bg-dark list-group-item-action">Linux   <span class="favourite badge float-end"><i class="bi bi-star"></i></span></button></a>
+                               <form method="GET">
+                                       <input type="hidden" name="platforms" value="windows">
+                                       <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                           Windows <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
+                                <form method="GET">
+                                    <input type="hidden" name="platforms" value="mac">
+                                    <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                        Mac <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
+                                <form method="GET">
+                                    <input type="hidden" name="platforms" value="linux">
+                                    <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                        Linux <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
                             </div>
                         </div>
                     </div>
@@ -59,14 +70,15 @@
                                     <input class="form-control border-0" type="text" id="developersInput" onkeyup="searchDevelopers('developersInput','developersUl')" placeholder="Developer name" title="Type in a name">
                                 </div>
                                 <!-- Developers list -->
-                                <ul class="list-unstyled" id="developersUl">
                                 <?php
                                 $dataSet = getMultipleValues('developer');
 
+
                                 foreach($dataSet as $row) {
-                                    echo "<li><a class=\"text-decoration-none\" href=\"#\"><button type=\"button\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></a></li>"; }?>
-                                </ul>
+                                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"developer\" value=".$row->getCategoryValue().">
+                                            <button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
+
                             </div>
                         </div>
                     </div>
@@ -82,8 +94,8 @@
                                 <?php
                                 $dataSet = getSingleValues('status');
                                 foreach($dataSet as $row  ) {
-                                    echo "<a class=\"text-decoration-none\" href=\"#\"><button type=\"button\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></a>"; }?>
+                                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"status\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
                             </div>
                         </div>
                     </div>
@@ -102,13 +114,11 @@
                                     <input class="form-control border-0" type="text" id="categoriesInput" onkeyup="searchDevelopers('categoriesInput','categoriesUl')" placeholder="Category name" title="Type in a name">
                                 </div>
                                 <!-- Categories list -->
-                                <ul class="list-unstyled" id="categoriesUl">
                                     <?php
                                     $dataSet = getMultipleValues('categories');
                                     foreach($dataSet as $row  ) {
-                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><button type=\"button\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></a></li>"; }?>
-                                </ul>
+                                        echo "<form method=\"GET\"><input type=\"hidden\" name=\"categories\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></form>"; }?>
 
                             </div>
                         </div>
@@ -126,14 +136,13 @@
                                     <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-search text-secondary"></i></span>
                                     <input class="form-control border-0" type="text" id="tagsInput" onkeyup="searchDevelopers('tagsInput','tagsUl')" placeholder="Tag name" title="Type in a name">
                                 </div>
-                                <!-- Categories list -->
-                                <ul class="list-unstyled" id="tagsUl">
+                                <!-- Tags list -->
                                     <?php
                                     $dataSet = getMultipleValues('tags');
                                     foreach($dataSet as $row  ) {
-                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><button type=\"button\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></a></li>"; }?>
-                                </ul>
+                                        echo "<form method=\"GET\"><input type=\"hidden\" name=\"tags\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
+
 
                             </div>
                         </div>
