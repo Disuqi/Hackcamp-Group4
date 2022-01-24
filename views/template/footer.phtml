@@ -12,53 +12,63 @@
 
     </div>
 
-
+<!--script for the More Details Button and Edit Button-->
     <script>
         $(document).ready( function (){
-
+            // script for the More Details Button Starts
             $('.dsp-btn').click(function (e) {
                 e.preventDefault();
+                //fetching the appid from table and storing into app_id variable
                 var app_id = $(this).closest('.app').find('.app-id').text();
 
-
+                //passing data to the controller page using ajax.
                 $.ajax({
-                    type: "POST",
-                    url:"./controllers/moreDetailsPopup.php",
+                    type: "POST",//passing data type
+                    url:"./controllers/moreDetailsPopup.php",//page data is being passed to
                     data: {
+                        //these are the data will be passed to controller page
                         'checking-view-btn':true,
                         'app-id':app_id,
                     },
+                    //controller response will be coming to this function
                     success: function (response){
+                        //html response from controller is passing to the details view class div
                         $('.details-view-data').html(response);
+                        //showing up the modal to show the response from the controller
                         $('#itemDetailsModal').modal('show');
                     }
 
                 });
-
-
-
             });
+            // script for the More Details Button Ends
 
+            // script for the Edit Details Button starts
             $('.edit-btn').click(function (e) {
                 e.preventDefault();
+                //fetching the appid from table and storing into app_id variable
                 var app_id = $(this).closest('.app').find('.app-id').text();
 
-
+                //passing data to the controller page using ajax.
                 $.ajax({
-                    type: "POST",
-                    url:"./controllers/moreDetailsPopup.php",
+                    type: "POST",//passing data type
+                    url:"./controllers/moreDetailsPopup.php",//page data is being passed to
                     data: {
+                        //these are the data will be passed to controller page
                         'checking-edit-btn':true,
                         'app-id':app_id,
                     },
+                    //controller response will be coming to this function
                     success: function (response){
+                        //html response from controller is passing to the edit data class div
                         $('.edit-data').html(response);
+                        //showing up the modal to show the response from the controller
                         $('#itemEditModal').modal('show');
                     }
 
                 });
 
             });
+            // script for the Edit Details Button ends
 
         });
 

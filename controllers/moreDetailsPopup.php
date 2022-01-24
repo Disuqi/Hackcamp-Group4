@@ -2,22 +2,30 @@
 $view = new stdClass();
 
 require_once('../models/ItemDataSet.php');
-
+//this is a more view details page
 if(isset($_POST['checking-view-btn'])){
-    $appid = $_POST['app-id'];
-    $app_id = (int) filter_var($appid, FILTER_SANITIZE_NUMBER_INT);
+    $appid = $_POST['app-id'];// storing app id
+    $app_id = (int) filter_var($appid, FILTER_SANITIZE_NUMBER_INT);//converting appid from string to int and removing alphabets
 
-    $dataSet = new ItemDataSet();
-    $sqlQuery = "SELECT * FROM gamesales WHERE appid = $app_id";
-    $view->items = $dataSet->getObjectsFromQuery($sqlQuery);
+    $dataSet = new ItemDataSet();// creates new itemDataSet object.
+    $sqlQuery = "SELECT * FROM gamesales WHERE appid = $app_id"; //it is a query to get data matches the appid
+    $view->items = $dataSet->getObjectsFromQuery($sqlQuery);//passing query to ItemDataSet class.
+
+    //running a for loop to get each cell of the row
     if($view->items >0){
 
         foreach($view->items as $item){
+            //removes the semi-colon from the string
             $remove = array(';');
+            //removes the semi-colon from the string
             $categories = str_replace($remove,', ',basename($item->getCategories()));
+            //removes the semi-colon from the string
             $tags = str_replace($remove,', ',basename($item->getTags()));
+            //removes the semi-colon from the string
             $platforms = str_replace($remove,', ',basename($item->getPlatforms()));
+            //removes the semi-colon from the string
             $genres = str_replace($remove,', ',basename($item->getGenres()));
+            //echos the html table back to view page
             echo $return = '
             <h5><span style="font-weight: bold">App ID: </span>'.$item->getAppId().' </h5>
             <h5><span style="font-weight: bold">Release Date: </span>'.$item->getReleaseDate().' </h5>
@@ -42,18 +50,20 @@ if(isset($_POST['checking-view-btn'])){
     }
 
 }
-
+//this is an Edit details page
 if(isset($_POST['checking-edit-btn'])){
-    $appid = $_POST['app-id'];
-    $app_id = (int) filter_var($appid, FILTER_SANITIZE_NUMBER_INT);
+    $appid = $_POST['app-id'];// storing app id
+    $app_id = (int) filter_var($appid, FILTER_SANITIZE_NUMBER_INT);//converting appid from string to int and removing alphabets
 
-    $dataSet = new ItemDataSet();
-    $sqlQuery = "SELECT * FROM gamesales WHERE appid = $app_id";
-    $view->items = $dataSet->getObjectsFromQuery($sqlQuery);
+    $dataSet = new ItemDataSet();// creates new itemDataSet object.
+    $sqlQuery = "SELECT * FROM gamesales WHERE appid = $app_id";//it is a query to get data matches the appid
+    $view->items = $dataSet->getObjectsFromQuery($sqlQuery);//passing query to ItemDataSet class.
+
+    //running a for loop to get each cell of the row
     if($view->items >0){
 
         foreach($view->items as $item){
-
+            //it returns a html page layout for edit page view.
             echo $return = '
             <form>
   <div class="row">
