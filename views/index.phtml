@@ -2,8 +2,8 @@
 require_once "quickAccessBar.phtml";
 require_once "filterPanel.phtml";
 if( isset($_SESSION['cards']) && $_SESSION['cards'] == 'true'){
-    require_once "itemCardLister.phtml";
+    require_once('itemCardLister.phtml');
 }else {
-    require_once "itemLister.phtml";
+    require_once('itemLister.phtml');
 }
-require_once "template/footer.phtml"; ?>
+require_once('views/template/footer.phtml'); ?>

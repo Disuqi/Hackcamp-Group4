@@ -1,4 +1,4 @@
-<?php require_once "filterPanel.phtml";
+<?php require_once('views/filterPanel.phtml');
 ?>
 <div class="p-3">
     <table
@@ -21,7 +21,7 @@
             style="border: 1px solid black;"
             <?php
                 if(sizeof($view->items) == 0 ){
-                    echo "data-url='/json/data.json'";
+                    echo "data-url='json/data.json'";
                 }
             ?>>
         <thead>

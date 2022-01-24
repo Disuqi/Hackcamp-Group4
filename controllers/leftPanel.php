@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/models/CategoryDataSet.php";
+require_once('./models/CategoryDataSet.php');
 
 //Returns dataset from cells that contain single values (one cell in database without semicolons)
 
@@ -34,7 +34,7 @@ function getFavourites()
     $dataSet = $catDataSet->fetchAllFavourites();
     return $dataSet;
 }
-require_once $_SERVER['DOCUMENT_ROOT'] . "/views/leftPanel.phtml";
+require_once('./views/leftPanel.phtml');
 
 
 

@@ -7,7 +7,7 @@ if(session_id() == ""){
     session_start();
 }
 
-require_once  $_SERVER['DOCUMENT_ROOT'] . "/models/itemDataSet.php";
+require_once('models/ItemDataSet.php');
 
 if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
     $dataSet = new ItemDataSet();
@@ -16,4 +16,4 @@ if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
 if(isset($_GET['cards'])){
     $_SESSION['cards'] = $_GET['cards'];
 }
-require_once $_SERVER['DOCUMENT_ROOT'] . "/views/index.phtml";
+require_once('views/index.phtml');

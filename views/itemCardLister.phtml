@@ -2,7 +2,7 @@
     <?php
     if(sizeof($view->items) == 0) {
         if(!isset($_SESSION['jsonFile'])) {
-            $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/json/data.json');
+            $json = file_get_contents('json/data.json');
             $_SESSION['jsonFile'] = json_decode($json, true);
         }
         $view->items = $_SESSION['jsonFile'];

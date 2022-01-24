@@ -1,7 +1,7 @@
 <?php
 $view = new stdClass();
 
-require_once  $_SERVER['DOCUMENT_ROOT'] . "/models/itemDataSet.php";
+require_once('./models/itemDataSet.php');
 
 if(isset($_POST['checking-view-btn'])){
     $appid = $_POST['app-id'];
