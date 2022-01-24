@@ -28,6 +28,7 @@
             <tr>
                 <th data-checkbox="true"></th>
                 <?php
+                //just a loop to make the table headings for each field
                     foreach($view->fields as $field){
                         if(in_array($field, $view->defaultFields)){
                             echo "<th data-field='$field' scope='col' data-sortable='true'>$field</th>";
@@ -40,6 +41,7 @@
         </thead>
         <tbody>
         <?php
+        //loop to make a table data item for each item
             foreach($view->items as $item){
                 echo "<tr><td data-checkbox='false'></td>";
                 foreach($view->fields as $field){

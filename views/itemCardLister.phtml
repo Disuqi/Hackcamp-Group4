@@ -1,5 +1,6 @@
 <div class="row justify-content-start mx-5">
     <?php
+    //is statement to get the items from json file if necessary
     if(sizeof($view->items) == 0) {
         if(!isset($_SESSION['jsonFile'])) {
             $json = file_get_contents('json/data.json');
@@ -8,6 +9,7 @@
         $view->items = $_SESSION['jsonFile'];
     }
     $counter = 0;
+    //just a loop to display the cards (max 50 cards)
     foreach($view->items as $item){
         $counter += 1;
         if($counter >= 50){

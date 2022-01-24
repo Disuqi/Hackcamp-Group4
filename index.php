@@ -8,35 +8,26 @@ if(session_id() == ""){
 }
 
 require_once('models/ItemDataSet.php');
+$dataSet = new ItemDataSet();
 
+//if the main search box has been used, use the search method to get the data
 if(isset($_POST['mainSearch']) && trim($_POST['mainSearch']) != ""){
-    $dataSet = new ItemDataSet();
     $view->items = $dataSet->search($_POST['mainSearch']);
 }
-if(isset($_GET['cards'])){
-    $_SESSION['cards'] = $_GET['cards'];
-}
 
-
-if(isset($_GET['platforms'])){
-    $dataSet = new ItemDataSet();
-    $view->items = $dataSet->search("platforms:" .$_GET['platforms']);
-}
-if(isset($_GET['developer'])){
-    $dataSet = new ItemDataSet();
-    $view->items = $dataSet->search("developer:" .$_GET['developer']);
-}
-if(isset($_GET['status'])){
-    $dataSet = new ItemDataSet();
-    $view->items = $dataSet->search("status:" .$_GET['status']);
-}
-if(isset($_GET['categories'])){
-    $dataSet = new ItemDataSet();
-    $view->items = $dataSet->search("categories:" .$_GET['categories']);
-}
-if(isset($_GET['tags'])){
-    $dataSet = new ItemDataSet();
-    $view->items = $dataSet->search("tags:" .$_GET['tags']);
+//if GET is set then it is a category search
+if(isset($_GET)){
+    $key = key($_GET);
+    switch($key){
+        case 'cards':
+            //the view will check for this session variable and display the cards instead of the list
+            $_SESSION[$key] = $_GET[$key];
+            break;
+        default:
+            //search for the category
+            $view->items = $dataSet->search( $key .":" .$_GET[$key]);
+            break;
+    }
 }
 
 require_once('views/index.phtml');

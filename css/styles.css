@@ -25,6 +25,7 @@ h1 {
 a:visited {
   color: black;
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -38,8 +39,6 @@ a {
   text-align: center;
 }
 .bdr{
-  /*height: 260px;*/
-  /*margin-bottom: 10px;*/
   border-radius: 15px;
 }
 
