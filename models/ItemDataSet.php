@@ -19,7 +19,7 @@ class ItemDataSet {
 
     public function fetchAllItems(): array
     {
-        $sqlQuery = 'SELECT * FROM gamesales';
+        $sqlQuery = 'SELECT * FROM gamesales LIMIT 200';
         return $this->getObjectsFromQuery($sqlQuery);
     }
 
@@ -169,6 +169,8 @@ class ItemDataSet {
                 array_push($values, trim($data));
             }
         }}
+        $sqlQuery.= ' LIMIT 200';
+
         return $this->getDbRowsFromQuery($sqlQuery, $values);
     }
 
