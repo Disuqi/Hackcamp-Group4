@@ -9,3 +9,4 @@ You can use the website here https://hc22-4.poseidon.salford.ac.uk/addenergy/
 6. If the databse is not loading, go to your php.ini(usually in the same folder as php.exe) file and uncomment the line extension=mysqli
 
 * Alternatively, go to https://hc22-4.poseidon.salford.ac.uk/addenergy/ to view the website
+* Project files available on: https://github.com/Disuqi/Hackcamp-Group4
