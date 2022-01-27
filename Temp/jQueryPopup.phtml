@@ -1,0 +1,27 @@
+<script>
+    $(document).ready( function (){
+
+        $('.dsp-btn').click(function (e) {
+            e.preventDefault();
+            var app_id = $(this).closest('.app').find('.app-id').text();
+
+
+            $.ajax({
+                type: "POST",
+                url:"/controllers/moreDetailsPopup.php",
+                data: {
+                    'checking-view-btn':true,
+                    'app-id':app_id,
+                },
+                success: function (response){
+                    $('.details-view-data').html(response);
+                    $('#itemDetailsModal').modal('show');
+                }
+
+            });
+
+        });
+
+    });
+
+</script>

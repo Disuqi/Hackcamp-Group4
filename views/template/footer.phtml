@@ -1,7 +1,80 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <!-- BootStrap JS -->
-    <script src="/js/bootstrap.bundle.js" type="text/javascript"></script>
-</body>
+    <script src="js/bootstrap.bundle.js" type="text/javascript"></script>
+    <!--    BootstrapTable-->
+    <script src="https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/resizable/bootstrap-table-resizable.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/toolbar/bootstrap-table-toolbar.min.js"></script>
+    <p class="d-flex justify-content-around ">Created by Group 4 Hack Camp University of Salford, 2022</p>
+
+    </div>
+
+<!--script for the More Details Button and Edit Button-->
+    <script>
+        $(document).ready( function (){
+            // script for the More Details Button Starts
+            $('.dsp-btn').click(function (e) {
+                e.preventDefault();
+                //fetching the appid from table and storing into app_id variable
+                var app_id = $(this).closest('.app').find('.app-id').text();
+
+                //passing data to the controller page using ajax.
+                $.ajax({
+                    type: "POST",//passing data type
+                    url:"./controllers/moreDetailsPopup.php",//page data is being passed to
+                    data: {
+                        //these are the data will be passed to controller page
+                        'checking-view-btn':true,
+                        'app-id':app_id,
+                    },
+                    //controller response will be coming to this function
+                    success: function (response){
+                        //html response from controller is passing to the details view class div
+                        $('.details-view-data').html(response);
+                        //showing up the modal to show the response from the controller
+                        $('#itemDetailsModal').modal('show');
+                    }
+
+                });
+            });
+            // script for the More Details Button Ends
+
+            // script for the Edit Details Button starts
+            $('.edit-btn').click(function (e) {
+                e.preventDefault();
+                //fetching the appid from table and storing into app_id variable
+                var app_id = $(this).closest('.app').find('.app-id').text();
+
+                //passing data to the controller page using ajax.
+                $.ajax({
+                    type: "POST",//passing data type
+                    url:"./controllers/moreDetailsPopup.php",//page data is being passed to
+                    data: {
+                        //these are the data will be passed to controller page
+                        'checking-edit-btn':true,
+                        'app-id':app_id,
+                    },
+                    //controller response will be coming to this function
+                    success: function (response){
+                        //html response from controller is passing to the edit data class div
+                        $('.edit-data').html(response);
+                        //showing up the modal to show the response from the controller
+                        $('#itemEditModal').modal('show');
+                    }
+
+                });
+
+            });
+            // script for the Edit Details Button ends
+
+        });
+
+    </script>
+
+
+
+    </body>
 </html>

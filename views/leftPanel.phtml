@@ -1,0 +1,170 @@
+<div class="row">
+<link href="css/leftPanelStyle.css" rel="stylesheet">
+<script src="js/leftPanel.js"></script>
+
+
+<div class="col-2 bg-dark vh-100 text-light ps-3 pt-2 m-0 overflow-auto leftPanel sticky-top">
+    <div class="row">
+        <div class="col-9"></div>
+        <!-- expand/hide menu button -->
+        <div class="col-2"><h2><i class="bi bi-chevron-left text-white"></i></h2></div>
+
+    </div>
+    <div class="row">
+        <!--Tabs menu-->
+        <nav class="p-0 m-0">
+            <h3>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active p-2" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="bi bi-folder2 text-secondary"></i></button>
+                <button class="nav-link p-2" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="bi bi-star text-secondary"></i></button>
+                <button class="nav-link p-2" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="bi bi-clock-history text-secondary"></i></button>
+            </div>
+            </h3>
+        </nav>
+        <!--Tabs content-->
+
+        <!--All Textual Categories List-->
+        <div class="tab-content pt-2" id="game-categories">
+
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <!--Expandable Categories Menu -->
+                <div class="accordion border-0" id="allCategories">
+                    <!-- Platforms List -->
+                    <div class="accordion-item border-0" id="platforms">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="bi bi-controller"></i> &nbsp; Platform </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse text-white bg-dark " aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body bg-dark p-1">
+                               <form method="GET">
+                                       <input type="hidden" name="platforms" value="windows">
+                                       <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                           Windows <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
+                                <form method="GET">
+                                    <input type="hidden" name="platforms" value="mac">
+                                    <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                        Mac <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
+                                <form method="GET">
+                                    <input type="hidden" name="platforms" value="linux">
+                                    <button type="submit" class=" list-group-item text-white bg-dark list-group-item-action">
+                                        Linux <span class="favourite badge float-end"><i class="bi bi-star"></i></span>
+                                    </button></form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Developers list -->
+                    <div class="accordion-item border-0" id="developers">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed p-1 " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <i class="bi bi-controller"></i> &nbsp;  Developers
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse text-white bg-dark" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-1">
+                                <!--Searchbox-->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-search text-secondary"></i></span>
+                                    <input class="form-control border-0" type="text" id="developersInput" onkeyup="searchDevelopers('developersInput','developersUl')" placeholder="Developer name" title="Type in a name">
+                                </div>
+                                <!-- Developers list -->
+                                <ul class="list-unstyled" id="developersUl">
+                                <?php
+                                $dataSet = getMultipleValues('developer');
+
+
+                                foreach($dataSet as $row) {
+                                    echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"developer\" value=".$row->getCategoryValue().">
+                                            <button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></a></li>"; }?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Status List -->
+                    <div class="accordion-item border-0" id="status">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button  collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="bi bi-controller"></i> &nbsp;  Status
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body bg-dark p-1">
+                                <?php
+                                $dataSet = getSingleValues('status');
+                                foreach($dataSet as $row  ) {
+                                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"status\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Categories List -->
+                    <div class="accordion-item border-0" id="categories">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="bi bi-controller"></i> &nbsp;  Categories </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body bg-dark p-1">
+                                <!-- Search Box -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-search text-secondary"></i></span>
+                                    <input class="form-control border-0" type="text" id="categoriesInput" onkeyup="searchDevelopers('categoriesInput','categoriesUl')" placeholder="Category name" title="Type in a name">
+                                </div>
+                                <ul class="list-unstyled" id="categoriesUl">
+                                <!-- Categories list -->
+                                    <?php
+                                    $dataSet = getMultipleValues('categories');
+                                    foreach($dataSet as $row  ) {
+                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"categories\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></form></a></li>"; }?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Game Tags List -->
+                    <div class="accordion-item border-0" id="tags">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="bi bi-controller"></i> &nbsp;  Tags </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body bg-dark p-1">
+                                <!-- Search Box -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-search text-secondary"></i></span>
+                                    <input class="form-control border-0" type="text" id="tagsInput" onkeyup="searchDevelopers('tagsInput','tagsUl')" placeholder="Tag name" title="Type in a name">
+                                </div>
+                                <!-- Tags list -->
+                                <ul class="list-unstyled" id="tagsUl">
+                                    <?php
+                                    $dataSet = getMultipleValues('tags');
+                                    foreach($dataSet as $row  ) {
+                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"tags\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></a></li>"; }?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Favourites Panel -->
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><?php
+                $dataSet = getFavourites();
+
+                foreach($dataSet as $row) {
+                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"".$row->getCategoryName()."\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star-fill\"></i></span></button></form>"; }?> </div>
+
+            <!--Search History Panel -->
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Search history panel</div>
+        </div>
+    </div>
+</div>
+
+
+
+

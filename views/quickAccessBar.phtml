@@ -1,0 +1,192 @@
+
+
+
+    <!--Buttons-->
+    <div style="padding: 0px 20px 20px 20px;">
+        <div class=" pt-0 text-center" >
+            <button type="button"
+                    class="btn rounded-pill"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin: 0px 5px 5px 5px;"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                User Dashboard
+            </button>
+            <button type="button"
+                    class="btn rounded-pill"
+                    style="background-color: #D4D4D4;border: 1px solid black; width: 205px; margin:0px 5px 5px 5px;"
+                    data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Quick Access Menu <i class="bi bi-chevron-down"></i>
+            </button>
+            <?php require_once('views/statisticsGenerator.phtml')?>
+            <script src="/js/statisticsPopUp.js" ></script>
+        </div>
+    </div>
+
+    <!--Quick access toolbar content-->
+    <div class="collapse pt-2 pb-2" style="background-color: #D4D4D4; padding: 5px;" id="collapseExample">
+        <div class="card-wrapper d-flex justify-content-center">
+            <div class="row card-group col-12">
+
+                <!-- Data analytics Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3" >
+                    <a href="#" id="statsButton" data-bs-toggle="modal" data-bs-target="#statsBox" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                            <i class="bi bi-bar-chart-line-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Data analytics</h3>
+                                <p>Generate a report based on your chosen data.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Apply Discount Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3">
+                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                            <i class="bi bi-pencil-fill"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Apply Discount</h3>
+                                <p>Apply discount to your chosen items.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Change Price Card -->
+                <div class=" col-sm-12 col-lg-4 mb-3">
+                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                            <i class="bi bi-cash-coin"  style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                            <div class="card-text">
+                                <h3 class="card-title">Change Price</h3>
+                                <p>Change the price of your chosen items.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">User Dashboard</h5>
+                    <button type="button" class="btn-close" style="width:15px; height:15px; " data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!--Dashboard content-->
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="card-wrapper d-flex justify-content-center">
+                            <div class="row card-group">
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-pencil-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Register new user</h3>
+                                                <p>Create, manage users, assign privileges and apply templates</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-layout-text-sidebar" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Create a template</h3>
+                                                <p>Create filtering template for left side panel and list display options</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Manage filters</h3>
+                                                <p>Sort top 100 games by downloaded at the moment</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-heart-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Top rated</h3>
+                                                <p>Sort top 100 games by top rated at the moment</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-star-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Most popular</h3>
+                                                <p>Sort top 100 games by most popular at the moment</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Least downloaded</h3>
+                                                <p>Sort top 100 games by least downloaded at the moment</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-heart-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Generate Report</h3>
+                                                <p>Generate a detailed report based on your chosen data and items</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-star-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Apply Discount</h3>
+                                                <p>Select the list of items and apply your chosen discount</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-lg-4 mb-3">
+                                    <a href="#" class="card-link"> <!--Anchor contains a single card to make the card clickable-->
+                                        <div class="card h-100 bdr shadow p-3 bg-white"> <!--Card container-->
+                                            <i class="bi bi-hand-thumbs-down-fill" style="font-size:50px;"></i> <!--Bootstrap icon modified in css file-->
+                                            <div class="card-text">
+                                                <h3 class="card-title">Data analytics</h3>
+                                                <p>View data analytics tools: graphs, charts and statistics</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+

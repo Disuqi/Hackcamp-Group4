@@ -1,0 +1,81 @@
+<div class="row justify-content-start mx-5">
+    <?php
+    //is statement to get the items from json file if necessary
+    if(sizeof($view->items) == 0) {
+        if(!isset($_SESSION['jsonFile'])) {
+            $json = file_get_contents('json/data.json');
+            $_SESSION['jsonFile'] = json_decode($json, true);
+        }
+        $view->items = $_SESSION['jsonFile'];
+    }
+    $counter = 0;
+    //just a loop to display the cards (max 50 cards)
+    foreach($view->items as $item){
+        $counter += 1;
+        if($counter >= 50){
+            break;
+        }
+        echo "
+            <div class='card m-3' style='width: 20rem'><div class='card-body app'>";
+        foreach($view->defaultFields as $field){
+            if($field == 'appid'){
+                echo "<h5 class='card-title app-id'><span style='font-weight: bold'>App ID:</span> " . $item[$field] ." </h5>";
+            }else{
+                echo "<p><span style='font-weight: bold'>$field:</span> " . $item[$field] ."</p>";
+            }
+        }
+        echo "<div class='d-flex'><input type='checkbox' class='form-check-input'><p class='mx-2'>Select Item</p></div>
+        <button href='#' class='btn btn-dark dsp-btn'>More Details</button>
+        <button href='#' class='btn btn-dark edit-btn'>Edit</button>
+    </div></div>";
+    }
+    ?>
+</div>
+
+<!-- Edit Modal  -->
+<div class="modal fade bd-example-modal-lg" id="itemEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel"><span style="font-weight: bold">Edit Game Details</span></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <!--  data from the script will be shown in the div below              -->
+                <div class="edit-data">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- item details view Modal  -->
+<div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel"><span style="font-weight: bold">Game Details</span></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!--  data from the script will be shown in the div below              -->
+               <div class="details-view-data">
+
+               </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+

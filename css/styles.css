@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.full-height-grow {
+  display: flex;
+  flex-direction: column;
+}
+
+.all-cards {
+  width: 90%;
+  max-width: 1320px;
+  align-self: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+a:visited {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.bi {
+  padding: 10px;
+}
+.card-text {
+  padding: 5px;
+  text-align: center;
+}
+.bdr{
+  border-radius: 15px;
+}
+
+
