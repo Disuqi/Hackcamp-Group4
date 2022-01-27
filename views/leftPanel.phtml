@@ -1,6 +1,6 @@
 <div class="row">
-<link href="css/leftPanelStyle.css" rel="stylesheet">
-<script src="js/leftPanel.js"></script>
+<link href="../css/leftPanelStyle.css" rel="stylesheet">
+<script src="../js/leftPanel.js"></script>
 
 
 <div class="col-2 bg-dark vh-100 text-light ps-3 pt-2 m-0 overflow-auto leftPanel sticky-top">
@@ -70,15 +70,16 @@
                                     <input class="form-control border-0" type="text" id="developersInput" onkeyup="searchDevelopers('developersInput','developersUl')" placeholder="Developer name" title="Type in a name">
                                 </div>
                                 <!-- Developers list -->
+                                <ul class="list-unstyled" id="developersUl">
                                 <?php
                                 $dataSet = getMultipleValues('developer');
 
 
                                 foreach($dataSet as $row) {
-                                    echo "<form method=\"GET\"><input type=\"hidden\" name=\"developer\" value=".$row->getCategoryValue().">
+                                    echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"developer\" value=".$row->getCategoryValue().">
                                             <button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
-
+                                        .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></a></li>"; }?>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -113,13 +114,14 @@
                                     <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-search text-secondary"></i></span>
                                     <input class="form-control border-0" type="text" id="categoriesInput" onkeyup="searchDevelopers('categoriesInput','categoriesUl')" placeholder="Category name" title="Type in a name">
                                 </div>
+                                <ul class="list-unstyled" id="categoriesUl">
                                 <!-- Categories list -->
                                     <?php
                                     $dataSet = getMultipleValues('categories');
                                     foreach($dataSet as $row  ) {
-                                        echo "<form method=\"GET\"><input type=\"hidden\" name=\"categories\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></form>"; }?>
-
+                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"categories\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></form></a></li>"; }?>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -137,13 +139,13 @@
                                     <input class="form-control border-0" type="text" id="tagsInput" onkeyup="searchDevelopers('tagsInput','tagsUl')" placeholder="Tag name" title="Type in a name">
                                 </div>
                                 <!-- Tags list -->
+                                <ul class="list-unstyled" id="tagsUl">
                                     <?php
                                     $dataSet = getMultipleValues('tags');
                                     foreach($dataSet as $row  ) {
-                                        echo "<form method=\"GET\"><input type=\"hidden\" name=\"tags\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
-                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form>"; }?>
-
-
+                                        echo "<li><a class=\"text-decoration-none\" href=\"#\"><form method=\"GET\"><input type=\"hidden\" name=\"tags\" value=".$row->getCategoryValue()."><button type=\"submit\" class=\" list-group-item text-white bg-dark list-group-item-action\">"
+                                            .$row->getCategoryValue(). "<span class=\"favourite badge float-end\"><i class=\"bi bi-star\"></i></span></button></form></a></li>"; }?>
+                                </ul>
                             </div>
                         </div>
                     </div>
